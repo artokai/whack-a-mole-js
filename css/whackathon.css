@@ -1,4 +1,50 @@
+html, body
+{
+	margin: 0;
+}
+
 body
 {
+	background: #eee;	
+}
+
+div
+{
+	box-sizing: border-box;
+}
+h1
+{
+	margin: 0;
+}
+
+#main 
+{
+	margin: 0 auto 0 auto;
+	padding: 5px;
+	max-width:1024px;
+	width: 100%;
+	height: 100vh;
 	background: white;
+}
+
+.mole_container 
+{
+	background: #E6E6E6;
+	margin: 0.5%;
+	float: left;
+}
+
+@media all and (orientation:portrait) {
+	.mole_container 
+	{
+		width: 32%;
+		height: 25vh;
+	}
+}
+@media all and (orientation:landscape) {
+	.mole_container 
+	{
+		width: 24%;
+		height: 25vw;
+	}
 }
