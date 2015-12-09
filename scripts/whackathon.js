@@ -35,6 +35,8 @@
 					$("#score").html(score);
 					mole.state = "dead";
 					mole.element.removeClass("visible").addClass("dead");
+					mole.whack.addClass("visible");
+					mole.whackTtl = 150;
 					mole.timer = getRandomInt(1000, 6000);
 				}
 			};
@@ -59,12 +61,18 @@
 				// Add a hype
 				var molehype = $("<div class='hype'>" + hypes[i] + "</div>",  {id:"MoleHype"+i });
 				molehype.appendTo(moleContainer);
+
+				// Add the whack =)
+				var whackImg = $("<img></img>", {id: "Whack_" + 1, class:'whack', src:"images/whack.png"});
+				whackImg.appendTo(moleContainer);
 				
 				// Create the mole
 				var mole = {
 					id: i,
 					state: "dead",
 					element: moleImg,
+					whack: whackImg,
+					whackTtl: 0,
 					timer: getRandomInt(0, 4000)
 				};
 				moles.push(mole);
@@ -89,9 +97,22 @@
 		for (var i=0; i<moleCount; i++)
 		{
 			var mole = moles[i];
+
+			// Hide the whack
+			if (mole.whackTtl > 0)
+			{
+				mole.whackTtl -= step;
+				if (mole.whackTtl <= 0)
+				{
+					mole.whack.removeClass("visible");
+					mole.whackTtl = 0;
+				}
+			}
+
+			// Mole lifetime events
 			mole.timer -=step;
 			if (mole.timer <= 0)
-			{
+			{				
 				if (mole.state == "dead")
 				{
 					$("#Mole_" + mole.id).attr("src", 'images/mole' + getRandomInt(0, moleCount-1) + '.jpg');

@@ -96,7 +96,7 @@ img {
 }
 
 .mole.visible {
-	transition: bottom 0.3s linear;
+	transition: bottom 0.5s linear;
 	bottom: 0;
 }
 
@@ -108,10 +108,22 @@ img {
 
 .mole.dead
 {
-	transition: bottom 0.1s linear;
+	transition: bottom 0.2s linear;
 	bottom: -100%;
 }
 
+.whack {
+	position: absolute;
+	bottom: 0.25vh;
+	left:5%;
+	width:90%;
+	display: none;
+}
+
+
+.whack.visible {
+	display: block;
+}
 
 @media all and (orientation:portrait) {
 	.mole_container 
